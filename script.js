@@ -98,10 +98,12 @@ function getMatches(url, elementId, filter = "") {
     .then(res => res.json())
 
     .then(data => {
-console.log(data);
-        let matches = data.response || [];
 
-        // Today Matches থেকে Live ও Finished ম্যাচ বাদ দাও
+console.log(data);
+console.log("Results:", data.results);
+console.log("Errors:", data.errors);
+
+let matches = data.response || [];       // Today Matches থেকে Live ও Finished ম্যাচ বাদ দাও
         if (filter === "today") {
 
             matches = matches.filter(match => {
