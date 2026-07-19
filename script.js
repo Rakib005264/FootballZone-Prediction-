@@ -54,7 +54,8 @@ function showMatches(matches, elementId){
 
 
             <div class="match">
-
+<a href="match.html?id=${match.fixture.id}" class="match-link">
+<div class="match">
 
             <div class="league">
 
