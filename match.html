@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FootballZone - Match Details</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Arial,sans-serif;
+background:#0f172a;
+color:#fff;
+}
+
+.container{
+max-width:700px;
+margin:auto;
+padding:20px;
+}
+
+.header{
+background:#1e293b;
+padding:20px;
+border-radius:15px;
+text-align:center;
+margin-bottom:20px;
+}
+
+.league{
+color:#facc15;
+font-size:15px;
+margin-bottom:15px;
+}
+
+.teams{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin:20px 0;
+}
+
+.team{
+width:35%;
+}
+
+.team img{
+width:70px;
+height:70px;
+}
+
+.team h3{
+margin-top:10px;
+font-size:18px;
+}
+
+.vs{
+font-size:28px;
+font-weight:bold;
+color:#22c55e;
+}
+
+.time{
+color:#94a3b8;
+margin-top:15px;
+}
+
+.tabs{
+display:flex;
+overflow-x:auto;
+gap:10px;
+padding-bottom:10px;
+margin-bottom:20px;
+}
+
+.tab{
+background:#1e293b;
+padding:12px 18px;
+border-radius:30px;
+cursor:pointer;
+white-space:nowrap;
+font-size:15px;
+}
+
+.tab.active{
+background:#22c55e;
+color:#000;
+font-weight:bold;
+}
+
+.content{
+background:#1e293b;
+padding:20px;
+border-radius:15px;
+min-height:250px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+
+<div class="league">
+🏆 <span id="league">Loading...</span>
+</div>
+
+<div class="teams">
+
+<div class="team">
+<img id="homeLogo" src="">
+<h3 id="homeTeam">Home</h3>
+</div>
+
+<div class="vs">
+VS
+</div>
+
+<div class="team">
+<img id="awayLogo" src="">
+<h3 id="awayTeam">Away</h3>
+</div>
+
+</div>
+
+<div class="time" id="matchTime">
+Loading Match Time...
+</div>
+
+</div>
+
+<div class="tabs">
+
+<div class="tab active">🎯 Prediction</div>
+
+<div class="tab">📊 Statistics</div>
+
+<div class="tab">🤝 H2H</div>
+
+<div class="tab">📈 Team Form</div>
+
+<div class="tab">👥 Lineups</div>
+
+<div class="tab">🏆 Standings</div>
+
+</div>
+
+<div class="content" id="content">
+
+<h2>🎯 Prediction</h2>
+
+<p>Prediction Data Coming Soon...</p>
+
+</div>
+
+</div>
+
+<script src="match.js"></script>
+
+</body>
+</html>
