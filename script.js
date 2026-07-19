@@ -73,7 +73,7 @@ headers:{
 .then(data => {
 
 
-console.log(data);
+console.log(data.response);
 
 
 showMatches(data.response, elementId);
