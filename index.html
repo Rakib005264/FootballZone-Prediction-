@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>FootballZone Prediction</title>
 
 <style>
+
 body{
     font-family: Arial, sans-serif;
-    background:#111827;
+    background:#0f172a;
     color:white;
+    margin:0;
+    padding:20px;
     text-align:center;
 }
 
@@ -18,145 +22,98 @@ h1{
     color:#22c55e;
 }
 
-.match{
-    background:#1f2937;
-    margin:15px;
-    padding:15px;
+h2{
+    background:#1e293b;
+    padding:12px;
     border-radius:10px;
 }
 
-.team{
-    font-size:20px;
-    font-weight:bold;
+
+.container{
+    max-width:600px;
+    margin:auto;
 }
 
-.time{
-    color:#facc15;
+
+.match{
+
+    background:#1e293b;
+    margin:15px 0;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 0 10px #000;
+
 }
+
+
+.team{
+
+    font-size:18px;
+    font-weight:bold;
+
+}
+
+
+.time{
+
+    color:#facc15;
+    margin-top:10px;
+
+}
+
+
+.loading{
+
+    color:#94a3b8;
+
+}
+
 </style>
+
 
 </head>
 
+
 <body>
+
+
+<div class="container">
+
 
 <h1>⚽ FootballZone Prediction</h1>
 
-<h3>🔥 Live Football Matches</h3>
 
-<div id="matches">
-Loading Matches...
+<h2>🔴 Live Matches</h2>
+
+<div id="liveMatches" class="loading">
+Loading Live Matches...
 </div>
 
 
-<script>
 
-const API_KEY = "1db6f76e7e16451244f6a725a02582ab";
+<h2>📅 Today's Matches</h2>
 
-
-fetch("https://v3.football.api-sports.io/fixtures?live=all", {
-
-method:"GET",
-
-headers:{
-"x-apisports-key": API_KEY
-}
-
-})
+<div id="todayMatches" class="loading">
+Loading Today's Matches...
+</div>
 
 
-.then(res=>res.json())
+
+<h2>🔜 Upcoming Matches</h2>
+
+<div id="upcomingMatches" class="loading">
+Loading Upcoming Matches...
+</div>
 
 
-.then(data=>{
-
-
-let matches = data.response;
-
-
-let html="";
-
-
-if(matches.length === 0){
-
-html="<h3>No Live Matches Found</h3>";
-
-}
-
-
-else{
-
-
-matches.forEach(match=>{
-
-
-html += `
-
-<div class="match">
-
-<div class="team">
-
-${match.teams.home.name}
-
-VS
-
-${match.teams.away.name}
 
 </div>
 
 
-<p class="time">
 
-Kick Off:
-${match.fixture.date}
-
-</p>
-
-
-<p>
-
-Score:
-${match.goals.home ?? 0}
-
--
-
-${match.goals.away ?? 0}
-
-</p>
-
-
-</div>
-
-`;
-
-
-});
-
-
-}
-
-
-
-document.getElementById("matches").innerHTML = html;
-
-
-})
-
-
-.catch(error=>{
-
-
-document.getElementById("matches").innerHTML =
-"API Error";
-
-
-console.log(error);
-
-
-});
-
-
-</script>
+<script src="script.js"></script>
 
 
 </body>
+
 </html>
