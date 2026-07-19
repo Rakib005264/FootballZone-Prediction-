@@ -253,7 +253,6 @@ getMatches(
 
 
 // Upcoming
-
 getMatches(
 
 "https://v3.football.api-sports.io/fixtures?next=10",
