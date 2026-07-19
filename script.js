@@ -137,8 +137,8 @@ console.log(data);
 // ===============================
 
 getMatches(
-    "https://v3.football.api-sports.io/fixtures?live=all",
-    "liveMatches"
+    "https://v3.football.api-sports.io/fixtures?date=2026-07-19",
+"liveMatches"
 );
 
 // ===============================
