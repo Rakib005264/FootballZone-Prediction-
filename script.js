@@ -1,10 +1,10 @@
 const API_KEY = "1db6f76e7e16451244f6a725a02582ab";
 
 
-// Match Card তৈরি
 function showMatches(matches, elementId){
 
     let html = "";
+
 
     if(!matches || matches.length === 0){
 
@@ -15,44 +15,91 @@ function showMatches(matches, elementId){
 
         matches.forEach(match => {
 
-            html += `
 
-            <div class="match">
+            let status = match.fixture.status.short;
 
-                <div class="team">
-                ${match.teams.home.name}
-                🆚
-                ${match.teams.away.name}
-                </div>
 
-                <p class="time">
-                ⏰ ${new Date(match.fixture.date).toLocaleString()}
-                </p>
+            let score = "";
 
+
+            if(
+                status === "FT" ||
+                status === "1H" ||
+                status === "2H" ||
+                status === "HT"
+            ){
+
+                score = `
                 <p>
-                Score:
+                ⚽ Score:
                 ${match.goals.home ?? 0}
                 -
                 ${match.goals.away ?? 0}
                 </p>
+                `;
+
+            } else {
+
+                score = `
+                <p>
+                ⏳ Match Not Started
+                </p>
+                `;
+
+            }
+
+
+
+            html += `
+
+            <div class="match">
+
+
+            <div class="team">
+
+            ${match.teams.home.name}
+
+            🆚
+
+            ${match.teams.away.name}
+
+            </div>
+
+
+
+            <p class="time">
+
+            🕒 ${new Date(match.fixture.date).toLocaleString()}
+
+            </p>
+
+
+
+            ${score}
+
 
             </div>
 
             `;
 
+
         });
+
 
     }
 
 
+
     document.getElementById(elementId).innerHTML = html;
+
 
 }
 
 
 
-// API Call Function
+
 function getMatches(url, elementId){
+
 
 fetch(url, {
 
@@ -73,7 +120,7 @@ headers:{
 .then(data => {
 
 
-console.log(data.response);
+console.log(data);
 
 
 showMatches(data.response, elementId);
@@ -84,15 +131,19 @@ showMatches(data.response, elementId);
 
 .catch(error => {
 
+
 console.log(error);
+
 
 document.getElementById(elementId).innerHTML =
 "API Error";
+
 
 });
 
 
 }
+
 
 
 
@@ -108,6 +159,7 @@ getMatches(
 
 
 
+
 // 📅 Today's Matches
 
 let today = new Date().toISOString().split("T")[0];
@@ -120,6 +172,7 @@ getMatches(
 "todayMatches"
 
 );
+
 
 
 
