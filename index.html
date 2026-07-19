@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -7,107 +8,7 @@
 
 <title>FootballZone Prediction</title>
 
-<style>
-
-body{
-    font-family:Arial,sans-serif;
-    background:#0f172a;
-    color:white;
-    margin:0;
-    padding:20px;
-    text-align:center;
-}
-
-h1{
-    color:#22c55e;
-}
-
-h2{
-    background:#1e293b;
-    padding:12px;
-    border-radius:10px;
-}
-
-
-/* Menu Bar */
-
-.menu{
-    display:flex;
-    gap:10px;
-    overflow-x:auto;
-    background:#111827;
-    padding:12px;
-    border-radius:12px;
-    position:sticky;
-    top:0;
-    z-index:999;
-}
-
-
-.menu a{
-    text-decoration:none;
-    color:white;
-    background:#2563eb;
-    padding:10px 15px;
-    border-radius:20px;
-    white-space:nowrap;
-    font-size:14px;
-}
-
-
-.menu a:hover{
-    background:#22c55e;
-}
-
-
-
-.container{
-    max-width:600px;
-    margin:auto;
-}
-
-
-.match{
-
-    background:#1e293b;
-    margin:15px 0;
-    padding:20px;
-    border-radius:15px;
-    box-shadow:0 0 10px #000;
-
-}
-
-
-.team{
-
-    font-size:18px;
-    font-weight:bold;
-
-}
-
-
-.time{
-
-    color:#facc15;
-    margin-top:10px;
-
-}
-
-
-.loading{
-
-    color:#94a3b8;
-
-}
-
-
-section{
-    scroll-margin-top:80px;
-    margin-top:20px;
-}
-
-
-</style>
+<link rel="stylesheet" href="style.css">
 
 </head>
 
@@ -121,8 +22,6 @@ section{
 <h1>⚽ FootballZone Prediction</h1>
 
 
-<!-- Menu -->
-
 <div class="menu">
 
 <a href="#home">🏠 Home</a>
@@ -133,8 +32,6 @@ section{
 
 <a href="#upcoming">🔜 Upcoming</a>
 
-<a href="#prediction">🎯 Prediction</a>
-
 </div>
 
 
@@ -144,7 +41,7 @@ section{
 <h2>🏠 Home</h2>
 
 <p>
-Live Football Scores, Today's Matches & Predictions
+Live Football Scores, Match Prediction & Statistics
 </p>
 
 </section>
@@ -156,8 +53,10 @@ Live Football Scores, Today's Matches & Predictions
 
 <h2>🔴 Live Matches</h2>
 
-<div id="liveMatches" class="loading">
+<div id="liveMatches">
+
 Loading Live Matches...
+
 </div>
 
 </section>
@@ -170,8 +69,10 @@ Loading Live Matches...
 
 <h2>📅 Today's Matches</h2>
 
-<div id="todayMatches" class="loading">
+<div id="todayMatches">
+
 Loading Today's Matches...
+
 </div>
 
 </section>
@@ -184,29 +85,14 @@ Loading Today's Matches...
 
 <h2>🔜 Upcoming Matches</h2>
 
-<div id="upcomingMatches" class="loading">
+<div id="upcomingMatches">
+
 Loading Upcoming Matches...
-</div>
-
-</section>
-
-
-
-
-
-<section id="prediction">
-
-<h2>🎯 Prediction For Today</h2>
-
-<div class="match">
-
-<p>
-⚽ Match Prediction Coming Soon
-</p>
 
 </div>
 
 </section>
+
 
 
 
