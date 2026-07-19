@@ -238,7 +238,7 @@ document.getElementById("content").innerHTML =
 "<h2>❌ API Error</h2>";
 
 // ===============================
-// Match Details Tabs
+// Match Tabs System
 // ===============================
 
 const tabButtons = document.querySelectorAll(".tab");
