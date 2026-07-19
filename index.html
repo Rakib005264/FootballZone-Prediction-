@@ -10,7 +10,7 @@
 <style>
 
 body{
-    font-family: Arial, sans-serif;
+    font-family:Arial,sans-serif;
     background:#0f172a;
     color:white;
     margin:0;
@@ -27,6 +27,38 @@ h2{
     padding:12px;
     border-radius:10px;
 }
+
+
+/* Menu Bar */
+
+.menu{
+    display:flex;
+    gap:10px;
+    overflow-x:auto;
+    background:#111827;
+    padding:12px;
+    border-radius:12px;
+    position:sticky;
+    top:0;
+    z-index:999;
+}
+
+
+.menu a{
+    text-decoration:none;
+    color:white;
+    background:#2563eb;
+    padding:10px 15px;
+    border-radius:20px;
+    white-space:nowrap;
+    font-size:14px;
+}
+
+
+.menu a:hover{
+    background:#22c55e;
+}
+
 
 
 .container{
@@ -68,8 +100,14 @@ h2{
 
 }
 
-</style>
 
+section{
+    scroll-margin-top:80px;
+    margin-top:20px;
+}
+
+
+</style>
 
 </head>
 
@@ -83,13 +121,52 @@ h2{
 <h1>⚽ FootballZone Prediction</h1>
 
 
+<!-- Menu -->
+
+<div class="menu">
+
+<a href="#home">🏠 Home</a>
+
+<a href="#live">🔴 Live Match</a>
+
+<a href="#today">📅 Today Match</a>
+
+<a href="#upcoming">🔜 Upcoming</a>
+
+<a href="#prediction">🎯 Prediction</a>
+
+</div>
+
+
+
+<section id="home">
+
+<h2>🏠 Home</h2>
+
+<p>
+Live Football Scores, Today's Matches & Predictions
+</p>
+
+</section>
+
+
+
+
+<section id="live">
+
 <h2>🔴 Live Matches</h2>
 
 <div id="liveMatches" class="loading">
 Loading Live Matches...
 </div>
 
+</section>
 
+
+
+
+
+<section id="today">
 
 <h2>📅 Today's Matches</h2>
 
@@ -97,13 +174,39 @@ Loading Live Matches...
 Loading Today's Matches...
 </div>
 
+</section>
 
+
+
+
+
+<section id="upcoming">
 
 <h2>🔜 Upcoming Matches</h2>
 
 <div id="upcomingMatches" class="loading">
 Loading Upcoming Matches...
 </div>
+
+</section>
+
+
+
+
+
+<section id="prediction">
+
+<h2>🎯 Prediction For Today</h2>
+
+<div class="match">
+
+<p>
+⚽ Match Prediction Coming Soon
+</p>
+
+</div>
+
+</section>
 
 
 
