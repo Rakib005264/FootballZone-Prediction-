@@ -1,7 +1,7 @@
 const API_KEY = "1db6f76e7e16451244f6a725a02582ab";
 
 
-// Match Show Function
+// Show Matches
 
 function showMatches(matches, elementId){
 
@@ -12,7 +12,7 @@ function showMatches(matches, elementId){
 
         html = "<p>No Matches Found</p>";
 
-    }else{
+    } else {
 
 
         matches.forEach(match => {
@@ -52,17 +52,51 @@ function showMatches(matches, elementId){
 
             html += `
 
+
             <div class="match">
 
-            <div class="team">
+
+            <div class="league">
+
+            🏆 ${match.league.name}
+
+            </div>
+
+
+
+            <div class="teams">
+
+
+            <div>
+
+            <img src="${match.teams.home.logo}" width="45">
+
+            <br>
 
             ${match.teams.home.name}
 
-            🆚
+            </div>
+
+
+
+            <h3>🆚</h3>
+
+
+
+            <div>
+
+            <img src="${match.teams.away.logo}" width="45">
+
+            <br>
 
             ${match.teams.away.name}
 
             </div>
+
+
+            </div>
+
+
 
 
             <p class="time">
@@ -72,10 +106,13 @@ function showMatches(matches, elementId){
             </p>
 
 
+
             ${score}
 
 
+
             </div>
+
 
             `;
 
@@ -95,18 +132,19 @@ function showMatches(matches, elementId){
 
 
 
-// API Fetch Function
-
-function getMatches(url, elementId, filterType){
+// Get Matches
 
 
-fetch(url, {
+function getMatches(url, elementId, filter){
+
+
+fetch(url,{
 
 method:"GET",
 
 headers:{
 
-"x-apisports-key": API_KEY
+"x-apisports-key":API_KEY
 
 }
 
@@ -119,12 +157,13 @@ headers:{
 .then(data=>{
 
 
-let matches = data.response;
+let matches=data.response;
 
 
-// Today Match থেকে Live এবং Finished বাদ
 
-if(filterType === "today"){
+// Remove Finished & Live From Today
+
+if(filter==="today"){
 
 
 matches = matches.filter(match=>{
@@ -134,10 +173,12 @@ let status = match.fixture.status.short;
 
 
 return (
+
 status !== "FT" &&
 status !== "1H" &&
 status !== "2H" &&
 status !== "HT"
+
 );
 
 
@@ -148,7 +189,7 @@ status !== "HT"
 
 
 
-showMatches(matches, elementId);
+showMatches(matches,elementId);
 
 
 
@@ -161,8 +202,7 @@ showMatches(matches, elementId);
 console.log(error);
 
 
-document.getElementById(elementId).innerHTML =
-"API Error";
+document.getElementById(elementId).innerHTML="API Error";
 
 
 });
@@ -174,7 +214,7 @@ document.getElementById(elementId).innerHTML =
 
 
 
-// 🔴 Live Matches
+// Live
 
 getMatches(
 
@@ -188,7 +228,7 @@ getMatches(
 
 
 
-// 📅 Today Upcoming Matches Only
+// Today Upcoming
 
 let today = new Date().toISOString().split("T")[0];
 
@@ -207,7 +247,7 @@ getMatches(
 
 
 
-// 🔜 Upcoming Matches
+// Upcoming
 
 getMatches(
 
