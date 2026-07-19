@@ -145,7 +145,7 @@ getMatches(
 // Load Today's Matches
 // ===============================
 
-const today = new Date().toISOString().split("T")[0];
+const today = new Date().toLocaleDateString('en-CA');
 
 getMatches(
     `https://v3.football.api-sports.io/fixtures?date=${today}`,
