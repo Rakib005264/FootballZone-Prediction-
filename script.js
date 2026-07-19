@@ -99,10 +99,6 @@ function getMatches(url, elementId, filter = "") {
 
     .then(data => {
 console.log(data);
-        document.getElementById(elementId).innerHTML =
-"<pre style='white-space:pre-wrap;color:white;'>" +
-JSON.stringify(data, null, 2) +
-"</pre>";
         let matches = data.response || [];
 
         // Today Matches থেকে Live ও Finished ম্যাচ বাদ দাও
