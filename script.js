@@ -1,6 +1,8 @@
 const API_KEY = "1db6f76e7e16451244f6a725a02582ab";
 
 
+// Match Show Function
+
 function showMatches(matches, elementId){
 
     let html = "";
@@ -10,7 +12,7 @@ function showMatches(matches, elementId){
 
         html = "<p>No Matches Found</p>";
 
-    } else {
+    }else{
 
 
         matches.forEach(match => {
@@ -35,16 +37,14 @@ function showMatches(matches, elementId){
                 ${match.goals.home ?? 0}
                 -
                 ${match.goals.away ?? 0}
-                </p>
-                `;
+                </p>`;
 
-            } else {
+            }else{
 
                 score = `
                 <p>
                 ⏳ Match Not Started
-                </p>
-                `;
+                </p>`;
 
             }
 
@@ -53,7 +53,6 @@ function showMatches(matches, elementId){
             html += `
 
             <div class="match">
-
 
             <div class="team">
 
@@ -66,13 +65,11 @@ function showMatches(matches, elementId){
             </div>
 
 
-
             <p class="time">
 
             🕒 ${new Date(match.fixture.date).toLocaleString()}
 
             </p>
-
 
 
             ${score}
@@ -89,7 +86,6 @@ function showMatches(matches, elementId){
     }
 
 
-
     document.getElementById(elementId).innerHTML = html;
 
 
@@ -98,7 +94,10 @@ function showMatches(matches, elementId){
 
 
 
-function getMatches(url, elementId){
+
+// API Fetch Function
+
+function getMatches(url, elementId, filterType){
 
 
 fetch(url, {
@@ -114,22 +113,49 @@ headers:{
 })
 
 
-.then(res => res.json())
+.then(res=>res.json())
 
 
-.then(data => {
+.then(data=>{
 
 
-console.log(data);
+let matches = data.response;
 
 
-showMatches(data.response, elementId);
+// Today Match থেকে Live এবং Finished বাদ
+
+if(filterType === "today"){
+
+
+matches = matches.filter(match=>{
+
+
+let status = match.fixture.status.short;
+
+
+return (
+status !== "FT" &&
+status !== "1H" &&
+status !== "2H" &&
+status !== "HT"
+);
+
+
+});
+
+
+}
+
+
+
+showMatches(matches, elementId);
+
 
 
 })
 
 
-.catch(error => {
+.catch(error=>{
 
 
 console.log(error);
@@ -147,6 +173,7 @@ document.getElementById(elementId).innerHTML =
 
 
 
+
 // 🔴 Live Matches
 
 getMatches(
@@ -160,7 +187,8 @@ getMatches(
 
 
 
-// 📅 Today's Matches
+
+// 📅 Today Upcoming Matches Only
 
 let today = new Date().toISOString().split("T")[0];
 
@@ -169,9 +197,12 @@ getMatches(
 
 `https://v3.football.api-sports.io/fixtures?date=${today}`,
 
-"todayMatches"
+"todayMatches",
+
+"today"
 
 );
+
 
 
 
