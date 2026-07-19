@@ -92,10 +92,151 @@ document.getElementById("matchTime").innerHTML =
 
 .catch(error=>{
 
-   }
+    console.log(error);
+
+    document.getElementById("content").innerHTML =
+    "<h2>❌ API Error</h2>";
+
+});
+
+}
+
+
+// ===============================
+// Tab System
+// ===============================
+
+const tabs = document.querySelectorAll(".tab");
+const content = document.getElementById("content");
+
+
+tabs.forEach(tab => {
+
+    tab.addEventListener("click", function(){
+
+
+        tabs.forEach(t => {
+
+            t.classList.remove("active");
+
+        });
+
+
+        this.classList.add("active");
+
+
+        let name = this.innerText;
+
+
+
+        if(name.includes("Prediction")){
+
+
+            content.innerHTML = `
+
+            <h2>🎯 Prediction</h2>
+
+            <p>🏠 Home Win: Coming Soon</p>
+
+            <p>🤝 Draw: Coming Soon</p>
+
+            <p>🚩 Away Win: Coming Soon</p>
+
+            <hr>
+
+            <p>⚽ Over/Under & BTTS Data Coming Soon</p>
+
+            `;
+
+
+        }
+
+
+
+        else if(name.includes("Statistics")){
+
+
+            content.innerHTML = `
+
+            <h2>📊 Statistics</h2>
+
+            <p>Ball Possession: Coming Soon</p>
+
+            <p>Shots: Coming Soon</p>
+
+            <p>Shots On Target: Coming Soon</p>
+
+            `;
+
+
+        }
+
 
 
         else if(name.includes("H2H")){
 
 
-            content.innerHTML =
+            content.innerHTML = `
+
+            <h2>🤝 H2H</h2>
+
+            <p>Previous Meetings Coming Soon...</p>
+
+            `;
+
+
+        }
+
+
+
+        else if(name.includes("Team Form")){
+
+
+            content.innerHTML = `
+
+            <h2>📈 Team Form</h2>
+
+            <p>Last 5 Matches Coming Soon...</p>
+
+            `;
+
+
+        }
+
+
+
+        else if(name.includes("Lineups")){
+
+
+            content.innerHTML = `
+
+            <h2>👥 Lineups</h2>
+
+            <p>Starting Lineups Coming Soon...</p>
+
+            `;
+
+
+        }
+
+
+
+        else if(name.includes("Standings")){
+
+
+            content.innerHTML = `
+
+            <h2>🏆 Standings</h2>
+
+            <p>League Table Coming Soon...</p>
+
+            `;
+
+
+        }
+
+
+    });
+
+
+});
