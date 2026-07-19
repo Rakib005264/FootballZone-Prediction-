@@ -237,7 +237,102 @@ tabs.forEach(tab => {
 document.getElementById("content").innerHTML =
 "<h2>❌ API Error</h2>";
 
+// ===============================
+// Match Details Tabs
+// ===============================
 
+const tabButtons = document.querySelectorAll(".tab");
+const tabContent = document.getElementById("content");
+
+
+tabButtons.forEach(tab => {
+
+    tab.addEventListener("click", function(){
+
+        // Active remove
+        tabButtons.forEach(item=>{
+            item.classList.remove("active");
+        });
+
+
+        // Active add
+        this.classList.add("active");
+
+
+        let tabName = this.innerText;
+
+
+        if(tabName.includes("Prediction")){
+
+            tabContent.innerHTML = `
+            <h2>🎯 Prediction</h2>
+
+            <p>🏠 Home Win: 45%</p>
+            <p>🤝 Draw: 25%</p>
+            <p>🚩 Away Win: 30%</p>
+
+            <hr>
+
+            <p>⚽ Over 2.5 Goals: 55%</p>
+            <p>🔥 BTTS: 60%</p>
+            `;
+
+        }
+
+
+        else if(tabName.includes("Statistics")){
+
+            tabContent.innerHTML = `
+            <h2>📊 Statistics</h2>
+            <p>Statistics Data Coming Soon...</p>
+            `;
+
+        }
+
+
+        else if(tabName.includes("H2H")){
+
+            tabContent.innerHTML = `
+            <h2>🤝 H2H</h2>
+            <p>Head To Head Data Coming Soon...</p>
+            `;
+
+        }
+
+
+        else if(tabName.includes("Team Form")){
+
+            tabContent.innerHTML = `
+            <h2>📈 Team Form</h2>
+            <p>Last 5 Matches Coming Soon...</p>
+            `;
+
+        }
+
+
+        else if(tabName.includes("Lineups")){
+
+            tabContent.innerHTML = `
+            <h2>👥 Lineups</h2>
+            <p>Lineups Coming Soon...</p>
+            `;
+
+        }
+
+
+        else if(tabName.includes("Standings")){
+
+            tabContent.innerHTML = `
+            <h2>🏆 Standings</h2>
+            <p>League Table Coming Soon...</p>
+            `;
+
+        }
+
+
+    });
+
+});
 });
 
 
