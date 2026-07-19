@@ -1,4 +1,4 @@
-const API_KEY = "1db6f76e7e16451244f6a725a02582ab";
+const API_KEY = "1db6f76e7e16451244f6a725a02582ab";const API_KEY = "তোমার_API_KEY";
 
 fetch("https://v3.football.api-sports.io/fixtures?live=all", {
   method: "GET",
@@ -8,10 +8,43 @@ fetch("https://v3.football.api-sports.io/fixtures?live=all", {
 })
 .then(res => res.json())
 .then(data => {
-  console.log(data);
-  alert("API Connected Successfully!");
+
+  let matches = data.response;
+
+  let html = "";
+
+  if(matches.length === 0){
+    html = "No Live Matches Found";
+  } else {
+
+    matches.forEach(match => {
+
+      html += `
+      <div class="match">
+        <h3>
+        ${match.teams.home.name} 
+        vs 
+        ${match.teams.away.name}
+        </h3>
+
+        <p>
+        Kick Off: ${match.fixture.date}
+        </p>
+
+        <p>
+        Score: ${match.goals.home} - ${match.goals.away}
+        </p>
+
+      </div>
+      `;
+
+    });
+
+  }
+
+  document.getElementById("matches").innerHTML = html;
+
 })
 .catch(error => {
-  console.error(error);
-  alert("API Error!");
-});
+ console.log(error);
+});<script src="script.js"></script>
