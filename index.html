@@ -1,39 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FootballZone Prediction</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FootballZone Prediction</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#111827;
+    color:white;
+    text-align:center;
+}
+
+h1{
+    color:#22c55e;
+}
+
+.match{
+    background:#1f2937;
+    margin:15px;
+    padding:15px;
+    border-radius:10px;
+}
+
+.team{
+    font-size:20px;
+    font-weight:bold;
+}
+
+.time{
+    color:#facc15;
+}
+</style>
+
 </head>
+
 <body>
 
-<header>
-  <h1>⚽ FootballZone</h1>
-</header>
+<h1>⚽ FootballZone Prediction</h1>
 
-<nav>
-  <a href="#">Home</a>
-  <a href="#">Live</a>
-  <a href="#">Fixtures</a>
-  <a href="#">Prediction</a>
-</nav>
+<h3>🔥 Live Football Matches</h3>
 
-<main>
-  <h2>Today's Matches</h2>
+<div id="matches">
+Loading Matches...
+</div>
 
-  <div class="match">
-    <h3>Real Madrid vs Barcelona</h3>
-    <p>Kick-off: 9:00 PM</p>
-  </div>
 
-  <div class="match">
-    <h3>Manchester City vs Liverpool</h3>
-    <p>Kick-off: 11:30 PM</p>
-  </div>
-</main>
+<script>
 
-<script src="script.js"></script>
+const API_KEY = "1db6f76e7e16451244f6a725a02582ab";
+
+
+fetch("https://v3.football.api-sports.io/fixtures?live=all", {
+
+method:"GET",
+
+headers:{
+"x-apisports-key": API_KEY
+}
+
+})
+
+
+.then(res=>res.json())
+
+
+.then(data=>{
+
+
+let matches = data.response;
+
+
+let html="";
+
+
+if(matches.length === 0){
+
+html="<h3>No Live Matches Found</h3>";
+
+}
+
+
+else{
+
+
+matches.forEach(match=>{
+
+
+html += `
+
+<div class="match">
+
+<div class="team">
+
+${match.teams.home.name}
+
+VS
+
+${match.teams.away.name}
+
+</div>
+
+
+<p class="time">
+
+Kick Off:
+${match.fixture.date}
+
+</p>
+
+
+<p>
+
+Score:
+${match.goals.home ?? 0}
+
+-
+
+${match.goals.away ?? 0}
+
+</p>
+
+
+</div>
+
+`;
+
+
+});
+
+
+}
+
+
+
+document.getElementById("matches").innerHTML = html;
+
+
+})
+
+
+.catch(error=>{
+
+
+document.getElementById("matches").innerHTML =
+"API Error";
+
+
+console.log(error);
+
+
+});
+
+
+</script>
+
 
 </body>
 </html>
