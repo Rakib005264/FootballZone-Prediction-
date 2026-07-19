@@ -98,7 +98,7 @@ function getMatches(url, elementId, filter = "") {
     .then(res => res.json())
 
     .then(data => {
-
+console.log(data);
         let matches = data.response || [];
 
         // Today Matches থেকে Live ও Finished ম্যাচ বাদ দাও
