@@ -58,7 +58,11 @@ function showMatches(matches, elementId){
 
             <div class="league">
 
-            🏆 ${match.league.name}
+🌍 ${match.league.country} - 🏆 ${match.league.name}
+
+</div>
+
+            
 
             </div>
 
